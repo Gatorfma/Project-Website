@@ -39,7 +39,7 @@ const ReportsSection = () => {
     <section id="reports" className="py-24 bg-muted/30">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16 animate-fade-in-up">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-purple-600 via-blue-600 to-purple-600 bg-clip-text text-transparent">
             Project Reports & Documentation
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
