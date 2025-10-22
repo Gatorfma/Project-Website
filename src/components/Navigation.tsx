@@ -58,7 +58,6 @@ const Navigation = () => {
             >
               Team
             </button>
-            <Button className="gradient-primary">Get Started</Button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -98,7 +97,6 @@ const Navigation = () => {
             >
               Team
             </button>
-            <Button className="w-full gradient-primary">Get Started</Button>
           </div>
         )}
       </div>

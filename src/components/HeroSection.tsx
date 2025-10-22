@@ -52,14 +52,6 @@ const HeroSection = () => {
             evidence-based psychology to help you manage your mental health through daily check-ins,
             thought tracking, and personalized insights.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-            <Button size="lg" className="gradient-primary shadow-large text-lg px-8">
-              Start Your Journey
-            </Button>
-            <Button size="lg" variant="outline" className="text-lg px-8 border-primary/20">
-              Learn More
-            </Button>
-          </div>
         </div>
 
         {/* Features Grid */}
