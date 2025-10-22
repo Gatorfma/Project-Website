@@ -43,8 +43,8 @@ const HeroSection = () => {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,_hsl(217.2_91.2%_59.8%_/_0.15),_transparent_50%)] -z-10" />
 
       <div className="container mx-auto px-4 pt-32 pb-16">
-        <div className="text-center max-w-4xl mx-auto animate-fade-in-up">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-pink-300 via-purple-300 to-fuchsia-300 bg-clip-text text-transparent">
+        <div className="text-center max-w-4xl mx-auto animate-fade-in-up pt-8">
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-pink-300 via-purple-300 to-fuchsia-300 bg-clip-text text-transparent leading-tight pb-2">
             MindJournal - Your AI-Powered Mental Health Companion
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
