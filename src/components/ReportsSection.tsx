@@ -14,11 +14,11 @@ interface Report {
 const ReportsSection = () => {
   const { toast } = useToast();
   const [reports, setReports] = useState<Report[]>([
-    { id: 1, title: "Technical Architecture", date: "", uploaded: false },
-    { id: 2, title: "User Research", date: "", uploaded: false },
-    { id: 3, title: "Sprint Report", date: "", uploaded: false },
-    { id: 4, title: "API Documentation", date: "", uploaded: false },
-    { id: 5, title: "Testing Report", date: "", uploaded: false },
+    { id: 1, title: "Project Specification", date: "", uploaded: false },
+    { id: 2, title: "Requirements Document", date: "", uploaded: false },
+    { id: 3, title: "Demo Presentation (PDF)", date: "", uploaded: false },
+    { id: 4, title: "Detailed Design Report", date: "", uploaded: false },
+    { id: 5, title: "Final Report", date: "", uploaded: false },
   ]);
 
   const handleUpload = (id: number) => {
