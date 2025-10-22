@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Upload, Download, FileText, Calendar } from "lucide-react";
+import { Upload, Download, FileText, Calendar, Trash2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 interface Report {
@@ -9,10 +9,14 @@ interface Report {
   title: string;
   date: string;
   uploaded: boolean;
+  fileName?: string;
+  fileData?: string;
+  fileType?: string;
 }
 
 const ReportsSection = () => {
   const { toast } = useToast();
+  const fileInputRefs = useRef<{ [key: number]: HTMLInputElement | null }>({});
   const [reports, setReports] = useState<Report[]>([
     { id: 1, title: "Project Specification", date: "", uploaded: false },
     { id: 2, title: "Requirements Document", date: "", uploaded: false },
@@ -21,17 +25,79 @@ const ReportsSection = () => {
     { id: 5, title: "Final Report", date: "", uploaded: false },
   ]);
 
-  const handleUpload = (id: number) => {
+  const handleUploadClick = (id: number) => {
+    fileInputRefs.current[id]?.click();
+  };
+
+  const handleFileChange = (id: number, event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const fileData = e.target?.result as string;
+      setReports((prev) =>
+        prev.map((report) =>
+          report.id === id
+            ? {
+                ...report,
+                uploaded: true,
+                date: new Date().toLocaleDateString(),
+                fileName: file.name,
+                fileData: fileData,
+                fileType: file.type,
+              }
+            : report
+        )
+      );
+      toast({
+        title: "Report Uploaded",
+        description: `${file.name} has been successfully uploaded.`,
+      });
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const handleDownload = (report: Report) => {
+    if (!report.fileData || !report.fileName) return;
+
+    const link = document.createElement("a");
+    link.href = report.fileData;
+    link.download = report.fileName;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+    toast({
+      title: "Download Started",
+      description: `Downloading ${report.fileName}`,
+    });
+  };
+
+  const handleRemove = (id: number) => {
     setReports((prev) =>
       prev.map((report) =>
         report.id === id
-          ? { ...report, uploaded: true, date: new Date().toLocaleDateString() }
+          ? {
+              ...report,
+              uploaded: false,
+              date: "",
+              fileName: undefined,
+              fileData: undefined,
+              fileType: undefined,
+            }
           : report
       )
     );
+    
+    // Clear the file input
+    if (fileInputRefs.current[id]) {
+      fileInputRefs.current[id]!.value = "";
+    }
+
     toast({
-      title: "Report Uploaded",
-      description: "Your document has been successfully uploaded.",
+      title: "File Removed",
+      description: "The document has been removed.",
     });
   };
 
@@ -65,6 +131,7 @@ const ReportsSection = () => {
                       size="icon"
                       className="text-primary hover:text-primary/80"
                       aria-label="Download report"
+                      onClick={() => handleDownload(report)}
                     >
                       <Download className="w-5 h-5" />
                     </Button>
@@ -74,27 +141,47 @@ const ReportsSection = () => {
               </CardHeader>
               <CardContent>
                 {report.uploaded ? (
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground mb-4">
-                    <Calendar className="w-4 h-4" />
-                    <span>Uploaded: {report.date}</span>
+                  <div className="space-y-2 mb-4">
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <Calendar className="w-4 h-4" />
+                      <span>Uploaded: {report.date}</span>
+                    </div>
+                    {report.fileName && (
+                      <p className="text-xs text-muted-foreground truncate">
+                        File: {report.fileName}
+                      </p>
+                    )}
                   </div>
                 ) : (
                   <p className="text-sm text-muted-foreground mb-4">
                     Document not yet uploaded
                   </p>
                 )}
-                <Button
-                  onClick={() => handleUpload(report.id)}
-                  disabled={report.uploaded}
-                  className={`w-full ${
-                    report.uploaded
-                      ? "bg-muted text-muted-foreground"
-                      : "gradient-primary"
-                  }`}
-                >
-                  <Upload className="w-4 h-4 mr-2" />
-                  {report.uploaded ? "Uploaded" : "Upload Document"}
-                </Button>
+                <input
+                  type="file"
+                  ref={(el) => (fileInputRefs.current[report.id] = el)}
+                  onChange={(e) => handleFileChange(report.id, e)}
+                  className="hidden"
+                  accept=".pdf,.doc,.docx,.ppt,.pptx,.txt,.md"
+                />
+                {report.uploaded ? (
+                  <Button
+                    onClick={() => handleRemove(report.id)}
+                    variant="destructive"
+                    className="w-full"
+                  >
+                    <Trash2 className="w-4 h-4 mr-2" />
+                    Remove Document
+                  </Button>
+                ) : (
+                  <Button
+                    onClick={() => handleUploadClick(report.id)}
+                    className="w-full gradient-primary"
+                  >
+                    <Upload className="w-4 h-4 mr-2" />
+                    Upload Document
+                  </Button>
+                )}
               </CardContent>
             </Card>
           ))}

@@ -20,7 +20,7 @@ const TeamSection = () => {
       name: "GatorBaba",
       role: "Team Member",
       bio: "Contributing to the MindJournal project.",
-      image: "/placeholder.svg",
+      image: "/gatorbaba.jpg",
       linkedin: "#",
       github: "#",
       email: "gatorbaba@mindjournal.com",
@@ -30,7 +30,7 @@ const TeamSection = () => {
       name: "DD",
       role: "Team Member",
       bio: "Contributing to the MindJournal project.",
-      image: "/placeholder.svg",
+      image: "/DD.png",
       linkedin: "#",
       github: "#",
       email: "dd@mindjournal.com",
@@ -40,7 +40,7 @@ const TeamSection = () => {
       name: "ErenB",
       role: "Team Member",
       bio: "Contributing to the MindJournal project.",
-      image: "/placeholder.svg",
+      image: "/erenb.jpeg",
       linkedin: "#",
       github: "#",
       email: "erenb@mindjournal.com",
@@ -50,7 +50,7 @@ const TeamSection = () => {
       name: "Project Ali",
       role: "Team Member",
       bio: "Contributing to the MindJournal project.",
-      image: "/placeholder.svg",
+      image: "/projectali.jpeg",
       linkedin: "#",
       github: "#",
       email: "ali@mindjournal.com",
@@ -60,7 +60,7 @@ const TeamSection = () => {
       name: "DenizS",
       role: "Team Member",
       bio: "Contributing to the MindJournal project.",
-      image: "/placeholder.svg",
+      image: "/denizs.jpeg",
       linkedin: "#",
       github: "#",
       email: "denizs@mindjournal.com",
@@ -83,14 +83,16 @@ const TeamSection = () => {
           {teamMembers.map((member, index) => (
             <Card
               key={member.id}
-              className="overflow-hidden hover:shadow-large transition-smooth hover:scale-105 border-2 hover:border-primary/20 animate-scale-in"
+              className="overflow-hidden transition-smooth border-2 animate-scale-in"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="aspect-square overflow-hidden">
                 <img
                   src={member.image}
                   alt={member.name}
-                  className="w-full h-full object-cover hover:scale-110 transition-smooth"
+                  className={`w-full h-full object-cover transition-smooth ${
+                    member.name === "GatorBaba" || member.name === "Project Ali" || member.name === "ErenB" || member.name === "DenizS" || member.name === "DD" ? "object-[center_25%]" : ""
+                  }`}
                 />
               </div>
               <CardContent className="p-6">
@@ -104,7 +106,6 @@ const TeamSection = () => {
                     <Button
                       variant="outline"
                       size="icon"
-                      className="hover:border-primary/50"
                       aria-label={`${member.name}'s LinkedIn`}
                     >
                       <Linkedin className="w-4 h-4" />
@@ -114,7 +115,6 @@ const TeamSection = () => {
                     <Button
                       variant="outline"
                       size="icon"
-                      className="hover:border-primary/50"
                       aria-label={`${member.name}'s GitHub`}
                     >
                       <Github className="w-4 h-4" />
@@ -124,7 +124,6 @@ const TeamSection = () => {
                     <Button
                       variant="outline"
                       size="icon"
-                      className="hover:border-primary/50"
                       aria-label={`Email ${member.name}`}
                     >
                       <Mail className="w-4 h-4" />
