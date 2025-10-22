@@ -19,7 +19,6 @@ const ReportsSection = () => {
     { id: 3, title: "Sprint Report", date: "", uploaded: false },
     { id: 4, title: "API Documentation", date: "", uploaded: false },
     { id: 5, title: "Testing Report", date: "", uploaded: false },
-    { id: 6, title: "Deployment Guide", date: "", uploaded: false },
   ]);
 
   const handleUpload = (id: number) => {

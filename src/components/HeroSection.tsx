@@ -71,7 +71,7 @@ const HeroSection = () => {
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="gradient-primary w-12 h-12 rounded-xl flex items-center justify-center mb-4 shadow-large">
-                <feature.icon className="w-6 h-6 text-white" />
+                <feature.icon className="w-6 h-6" style={{ color: 'white' }} />
               </div>
               <h3 className="text-lg font-semibold mb-2">{feature.title}</h3>
               <p className="text-muted-foreground text-sm">{feature.description}</p>

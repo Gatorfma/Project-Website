@@ -54,6 +54,16 @@ const TeamSection = () => {
       github: "#",
       email: "james@mindjournal.com",
     },
+    {
+      id: 5,
+      name: "Alex Patel",
+      role: "Data Scientist",
+      bio: "Specialized in mental health analytics and predictive modeling to provide personalized insights and recommendations.",
+      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop",
+      linkedin: "#",
+      github: "#",
+      email: "alex@mindjournal.com",
+    },
   ];
 
   return (
@@ -68,7 +78,7 @@ const TeamSection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 max-w-7xl mx-auto">
           {teamMembers.map((member, index) => (
             <Card
               key={member.id}
