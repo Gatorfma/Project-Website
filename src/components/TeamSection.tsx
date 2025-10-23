@@ -91,7 +91,7 @@ const TeamSection = () => {
                   src={member.image}
                   alt={member.name}
                   className={`w-full h-full object-cover transition-smooth ${
-                    member.name === "GatorBaba" || member.name === "Project Ali" || member.name === "ErenB" || member.name === "DenizS" || member.name === "DD" ? "object-[center_25%]" : ""
+                    member.name === "Furkan Mert Aksakal" || member.name === "Ali Deniz Sözer" || member.name === "Mehmet Eren Anbar" || member.name === "Deniz Şahin" || member.name === "Deniz Yazıcı" ? "object-[center_25%]" : ""
                   }`}
                 />
               </div>
