@@ -17,53 +17,53 @@ const TeamSection = () => {
   const teamMembers: TeamMember[] = [
     {
       id: 1,
-      name: "GatorBaba",
+      name: "Furkan Mert Aksakal",
       role: "Team Member",
       bio: "Contributing to the MindJournal project.",
       image: "/gatorbaba.jpg",
       linkedin: "#",
       github: "#",
-      email: "gatorbaba@mindjournal.com",
+      email: "#",
     },
     {
       id: 2,
-      name: "DD",
+      name: "Deniz Yazıcı",
       role: "Team Member",
       bio: "Contributing to the MindJournal project.",
       image: "/DD.png",
       linkedin: "#",
       github: "#",
-      email: "dd@mindjournal.com",
+      email: "#",
     },
     {
       id: 3,
-      name: "ErenB",
+      name: "Mehmet Eren Anbar",
       role: "Team Member",
       bio: "Contributing to the MindJournal project.",
       image: "/erenb.jpeg",
       linkedin: "#",
       github: "#",
-      email: "erenb@mindjournal.com",
+      email: "#",
     },
     {
       id: 4,
-      name: "Project Ali",
+      name: "Ali Deniz Sözer",
       role: "Team Member",
       bio: "Contributing to the MindJournal project.",
       image: "/projectali.jpeg",
       linkedin: "#",
       github: "#",
-      email: "ali@mindjournal.com",
+      email: "#",
     },
     {
       id: 5,
-      name: "DenizS",
+      name: "Deniz Şahin",
       role: "Team Member",
       bio: "Contributing to the MindJournal project.",
       image: "/denizs.jpeg",
       linkedin: "#",
       github: "#",
-      email: "denizs@mindjournal.com",
+      email: "#",
     },
   ];
 
@@ -75,7 +75,7 @@ const TeamSection = () => {
             Meet the Team
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            A diverse team of experts passionate about making mental health support accessible and effective through technology.
+            A diverse team of senior students passionate about making mental health support accessible and effective through technology.
           </p>
         </div>
 
