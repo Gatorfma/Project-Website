@@ -12,7 +12,7 @@ interface Report {
 const ReportsSection = () => {
   const { toast } = useToast();
   const [reports] = React.useState<Report[]>([
-    { id: 1, title: "Project Specification Document" },
+    { id: 1, title: "Project Specification" },
     { id: 2, title: "Requirements Report" },
     { id: 3, title: "Demo Presentation" },
     { id: 4, title: "Detailed Design Report" },
