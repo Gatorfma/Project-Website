@@ -20,7 +20,8 @@ const ReportsSection = () => {
   ]);
 
   const handleViewPDF = (title: string) => {
-    const pdfPath = `/reports/${title}.pdf`;
+    // Use BASE_URL to handle GitHub Pages base path
+    const pdfPath = `${import.meta.env.BASE_URL}reports/${title}.pdf`;
     window.open(pdfPath, "_blank");
   };
 
