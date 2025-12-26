@@ -1,6 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Linkedin, Github, Mail } from "lucide-react";
+import { getAssetPath } from "@/lib/assetPath";
 
 interface TeamMember {
   id: number;
@@ -88,7 +89,7 @@ const TeamSection = () => {
             >
               <div className="aspect-square overflow-hidden">
                 <img
-                  src={member.image}
+                  src={getAssetPath(member.image)}
                   alt={member.name}
                   className={`w-full h-full object-cover transition-smooth ${
                     member.name === "Furkan Mert Aksakal" || member.name === "Ali Deniz Sözer" || member.name === "Mehmet Eren Anbar" || member.name === "Deniz Şahin" || member.name === "Deniz Yazıcı" ? "object-[center_25%]" : ""

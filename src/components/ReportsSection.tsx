@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { FileText, Eye } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { getAssetPath } from "@/lib/assetPath";
 
 interface Report {
   id: number;
@@ -20,8 +21,7 @@ const ReportsSection = () => {
   ]);
 
   const handleViewPDF = (title: string) => {
-    // Use BASE_URL to handle GitHub Pages base path
-    const pdfPath = `${import.meta.env.BASE_URL}reports/${title}.pdf`;
+    const pdfPath = getAssetPath(`reports/${title}.pdf`);
     window.open(pdfPath, "_blank");
   };
 
